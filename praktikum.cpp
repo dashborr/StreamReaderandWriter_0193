@@ -35,3 +35,26 @@ public:
         }
     }
 };
+
+void tampilkanBarang()
+{
+    ifstream file("gudang.txt");
+
+    cout << "\n===== DAFTAR BARANG DI GUDANG =====\n";
+
+    if (!file)
+    {
+        cout << "Belum ada data barang.\n";
+        return;
+    }
+
+    string barang;
+    int no = 1;
+
+    while (getline(file, barang))
+    {
+        cout << no++ << ". " << barang << endl;
+    }
+
+    file.close();
+}
