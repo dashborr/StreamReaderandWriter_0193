@@ -58,3 +58,19 @@ void tampilkanBarang()
 
     file.close();
 }
+
+vector<string> bacaSemuaBarang()
+{
+    vector<string> data;
+    ifstream file("gudang.txt");
+
+    string barang;
+
+    while (getline(file, barang))
+    {
+        data.push_back(barang);
+    }
+
+    file.close();
+    return data;
+}
