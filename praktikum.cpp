@@ -134,3 +134,39 @@ void updateBarang()
 
     cout << "Data berhasil diperbarui.\n";
 }
+
+void hapusBarang()
+{
+    vector<string> data = bacaSemuaBarang();
+
+    if (data.empty())
+    {
+        cout << "Data kosong.\n";
+        return;
+    }
+
+    tampilkanBarang();
+
+    int nomor;
+    cout << "\nPilih nomor barang yang akan dihapus : ";
+    cin >> nomor;
+
+    if (nomor < 1 || nomor > data.size())
+    {
+        cout << "Nomor tidak valid.\n";
+        return;
+    }
+
+    data.erase(data.begin() + nomor - 1);
+
+    ofstream file("gudang.txt");
+
+    for (string barang : data)
+    {
+        file << barang << endl;
+    }
+
+    file.close();
+
+    cout << "Data berhasil dihapus.\n";
+}
