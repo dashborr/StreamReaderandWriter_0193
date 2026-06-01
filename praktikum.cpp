@@ -92,3 +92,45 @@ void tambahBarang()
 
     cout << "Data berhasil ditambahkan.\n";
 }
+
+void updateBarang()
+{
+    vector<string> data = bacaSemuaBarang();
+
+    if (data.empty())
+    {
+        cout << "Data kosong.\n";
+        return;
+    }
+
+    tampilkanBarang();
+
+    int nomor;
+    cout << "\nPilih nomor barang yang akan diubah : ";
+    cin >> nomor;
+
+    if (nomor < 1 || nomor > data.size())
+    {
+        cout << "Nomor tidak valid.\n";
+        return;
+    }
+
+    cin.ignore();
+
+    string barangBaru;
+    cout << "Masukkan nama barang baru : ";
+    getline(cin, barangBaru);
+
+    data[nomor - 1] = barangBaru;
+
+    ofstream file("gudang.txt");
+
+    for (string barang : data)
+    {
+        file << barang << endl;
+    }
+
+    file.close();
+
+    cout << "Data berhasil diperbarui.\n";
+}
