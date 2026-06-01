@@ -74,3 +74,21 @@ vector<string> bacaSemuaBarang()
     file.close();
     return data;
 }
+
+void tambahBarang()
+{
+    ofstream file("gudang.txt", ios::app);
+
+    string barang;
+
+    cin.ignore();
+
+    cout << "Masukkan nama barang : ";
+    getline(cin, barang);
+
+    file << barang << endl;
+
+    file.close();
+
+    cout << "Data berhasil ditambahkan.\n";
+}
